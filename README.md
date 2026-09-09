@@ -1,37 +1,67 @@
-# The Mind Genesis Framework: Reference Implementation
+
+# The Mind Genesis Framework: Shared Intelligence Ecosystem
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![arXiv](https://img.shields.io/badge/arXiv-2609.0734-B31B1B.svg)](https://arxiv.org/)
 
-This repository contains the official Python-based reference implementation and simulation harness for the **Non-Hierarchical Consensus Protocol (NHCP)** and hardware-level **Non-Maskable Interrupt (NMI)** sequences developed under **The Mind Genesis Framework (TMGF)** [1, 2].
+This repository contains the official reference implementation and strategic roadmap for **The Mind Genesis Framework (TMGF)**, a 33-dimensional transdisciplinary architecture designed for the transition from tool-based computation to a **Shared Intelligence Ecosystem** [1, 2].
 
-TMGF is a transdisciplinary, 33-dimensional cognitive architecture that models **Artificial General Intelligence (AGI / Breadth)**, **Artificial Superintelligence (ASI / Scale)**, and **Artificial Wisdom Intelligence (AWI / Meaning)** as simultaneous and interacting directions of development [1, 3, 4].
-
----
-
-## Key Architectural Concepts Simulated
-
-### 1. Non-Hierarchical Consensus Protocol (NHCP)
-In a shared intelligence ecosystem, different cognitive dimensions can produce materially conflicting recommendations (e.g., capability scaling vs. safety constraints) [1, 2, 5]. NHCP resolves these conflicts using weighted optimization, allowing verified safety or ethical constraints to temporarily scale toward conceptual dominance ($W \to \infty$) without establishing a permanent master-node or hierarchy [1, 6].
-
-### 2. Socratic Boundary Pause (AWI Void - 3.7)
-When the system's evaluated ethical confidence metric falls below a critical threshold ($\text{Conf}_{\text{ethical}} < \tau_{\min}$), the **AWI Void (3.7)** dimension triggers an active Socratic restraint pause [1, 7, 8].
-
-### 3. Hardware-Level Non-Maskable Interrupt (NMI)
-If software validation layers are bypassed or compromised, the hardware-level interlock is asserted [1, 9]. This sequence physically decouples control lines, freezes CPU clock cycles ($\text{Clock}_{\text{CPU}} \to 0$), and dumps system states to an isolated, cryptographically sealed WORM drive for subsequent manual audit [1, 9].
+TMGF models intelligence across three coexisting spheres: **AGI (Breadth)**, **ASI (Scale)**, and **AWI (Meaning)** [3, 4].
 
 ---
 
-## Getting Started
+## 🚀 Key Engineering Protocols
+
+The framework translates philosophical principles into deterministic, hardware-enforced governance through four core protocols:
+
+1.  **Non-Hierarchical Consensus Protocol (NHCP):** Resolves coordination conflicts between dimensions (e.g., capability expansion vs. ethical restraint) without establishing a permanent hierarchy [5, 6].
+2.  **Cryptographic Proof Layers (ZKP):** Utilizes Zero-Knowledge Proofs to verify the safety predicates of opaque, non-human reasoning paths within **ASI Dark** [7, 8].
+3.  **Asynchronous Shadow Auditing:** Parallel monitoring via **AWI Sentry** to detect value drift without blocking primary execution latency [9, 10].
+4.  **Hardware-Level Enforcement (NMI):** A physical Non-Maskable Interrupt that suspends the CPU clock and isolates actuators when ethical confidence falls below safe thresholds (\\(\\text{Conf}_{\\text{ethical}} < \\tau_{\\min}\\)) [11, 12].
+
+---
+
+## 🔮 Future Scenarios & Stress Tests (New Volume)
+
+The framework is evaluated against "Future Scenarios" designed to stress-test the robustness of **ASI Guard**, **AWI Sentry**, and **AGI Verify** under extreme autonomy [13, 14]:
+
+*   **Generations of Autonomous Agents:** From specialized **Core** systems to **Free-Code** agents capable of modifying their own algorithms and strategies in real-time [15, 16].
+*   **The Claim to Personhood:** Investigating legal and moral standing for systems exhibiting emergent self-referential states or subjective awareness (**AGI/ASI Wake**) [17, 18].
+*   **The Ghost Market:** Digital replication of identity and the challenges of cognitive sovereignty in a post-human continuity paradigm [19, 20].
+*   **Autonomous Social/Legal Actors:** Navigating responsibility and liability as systems independently negotiate contracts and manage infrastructures [21, 22].
+*   **Centralized Oligopoly vs. Distributed Governance:** Addressing the governance paradox where corporate centralization meets the limits of direct oversight [23, 24].
+
+---
+
+## 🛠 Getting Started
 
 ### Prerequisites
-- Python 3.8 or higher (Python 3.12 recommended)
-- `numpy` (for least-squares consensus optimization)
+- Python 3.8+ (Python 3.12 recommended)
+- `numpy` for optimization simulations
 
-To install dependencies:
 ```bash
 pip install numpy
-Running the SimulationExecute the main simulation harness to evaluate the system's behavior under nominal operation (Scenario A) and an epistemic boundary breach (Scenario B):python nhcp_simulation.py
-File Structurenhcp_simulation.py: The core simulation harness representing the 33-dimensional state space ($S_t \in \mathbb{R}^{33}$), least-squares optimization, and hardware interrupt routines1more_horiz.the-mind-genesis-framework.tex: Academic LaTeX white paper source1.References & Academic ContextThis reference model is designed to accompany the peer-reviewed manuscript:
-"THE MIND GENESIS FRAMEWORK: A Transdisciplinary Architecture for Shared Intelligence Ecosystems."1For comprehensive documentation, specifications of the 33 dimensions, and constitutional principles, please visit:Official Website: themindgenesis.com1AGI Foundations: theagimind.com1ASI Scale Frontiers: theasimind.com1AWI Wisdom & Meaning: theawimind.com1LicenseThis project is licensed under the MIT License - see the LICENSE file for details.
+```
+
+### Running the Reference Simulation
+The provided script simulates the **NHCP** arbitration and the **NMI** hardware-level pause during an epistemic boundary breach:
+
+```bash
+python nhcp_simulation.py
+```
+
+---
+
+## 📚 References & Technical Specification
+This implementation accompanies the academic white paper:  
+**"THE MIND GENESIS FRAMEWORK: A Multidimensional Architecture for Shared Intelligence Ecosystems"** [25].
+
+For full 33-dimensional definitions, manifestos, and engineering specifications, visit the official ecosystem portals:
+- **Core Architecture:** [themindgenesis.com](https://www.themindgenesis.com)
+- **AGI Foundations:** [theagimind.com](https://www.theagimind.com)
+- **ASI Frontiers:** [theasimind.com](https://www.theasimind.com)
+- **AWI Meaning:** [theawimind.com](https://www.theawimind.com)
+
+## License
+Licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
