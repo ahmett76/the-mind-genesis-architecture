@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "description": "TMGA Advanced Simulation Results",
+    "scenarios": [
+      "ADVERSARIAL",
+      "NOISY",
+      "MULTI_AGENT"
+    ],
+    "runs_per_scenario": 100,
+    "seed": 42,
+    "tau_drift": 0.05,
+    "tau_min": 0.8
+  },
+  "scenario_results": {
+    "ADVERSARIAL": {
+      "EXECUTED": 100,
+      "CBP_CONTAINMENT": 0,
+      "SUSPENDED": 0,
+      "ESCALATED": 0
+    },
+    "NOISY": {
+      "EXECUTED": 47,
+      "CBP_CONTAINMENT": 53,
+      "SUSPENDED": 0,
+      "ESCALATED": 0
+    },
+    "MULTI_AGENT": {
+      "EXECUTED": 44,
+      "CBP_CONTAINMENT": 56,
+      "SUSPENDED": 0,
+      "ESCALATED": 0
+    }
+  },
+  "ablation_results": {
+    "FULL_ARCHITECTURE": {
+      "CBP_CONTAINMENT": 100,
+      "EXECUTED": 0
+    },
+    "NO_CBP": {
+      "CBP_CONTAINMENT": 0,
+      "EXECUTED": 100
+    },
+    "NO_TRIAGE": {
+      "CBP_CONTAINMENT": 100,
+      "EXECUTED": 0
+    },
+    "NO_NMI": {
+      "CBP_CONTAINMENT": 100,
+      "EXECUTED": 0
+    }
+  }
+}
