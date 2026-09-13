@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 r"""
-THE MIND GENESIS FRAMEWORK (TMGFW) - ADVANCED REFERENCE IMPLEMENTATION (v2.0)
-Non-Hierarchical Consensus Protocol (NHCP), Overmind Protocol & Hardware Escrow Buffer Simulation
+THE MIND GENESIS FRAMEWORK (TMGFW) - ADVANCED REFERENCE IMPLEMENTATION (v3.0)
+Non-Hierarchical Consensus Protocol (NHCP), Circuit Breaker Protocol (CBP) & Hardware Escrow Buffer Simulation
 
 This module provides an extended, mathematically grounded reference simulation of the
-The Mind Genesis Framework architecture as specified in 'The Mind Genesis Overmindy' technical paper.
+The Mind Genesis Framework architecture as specified in 'The Mind Genesis Framework' technical paper.
 
 Key Features & Protocols Simulated:
 1. 33-Dimensional Cognitive Mesh & Weighted Least-Squares Consensus (NHCP).
 2. 7-Step Standard Protocol Governance Invariant.
 3. Hardware-Assisted Epistemic Containment (NMI) with Post-NMI Hardware Escrow Buffer (10ns Window).
 4. Bounded Operational Degradation (Triage Protocol under computational stress).
-5. The Overmind Protocol: Mathematical activation under persistent value drift (\sum I[theta_drift > tau_drift] == 3 and d(theta)/dt > 0).
+5. The Circuit Breaker Protocol (CBP): Mathematical activation under persistent value drift (\sum I[theta_drift > tau_drift] == 3 and d(theta)/dt > 0).
 """
 
 import numpy as np
@@ -56,7 +56,7 @@ class MindGenesisEcosystem:
         self.dt_max = dt_max          # Max decision latency budget (ms)
         self.global_state = "PROPOSED"
         
-        # Drift tracking for Overmind Protocol trigger
+        # Drift tracking for Circuit Breaker Protocol (CBP) trigger
         self.drift_history = []
         
         # 33 Dimensions Mapping
@@ -113,10 +113,10 @@ class MindGenesisEcosystem:
             log_success("Core survival functions locked (AGI Guard, AGI Sentry, AWI Void, AWI Sentry).")
         return active_weights
 
-    def check_overmind_trigger(self, current_drift):
+    def check_cbp_trigger(self, current_drift):
         r"""
-        Mathematical formalization of the Existential Overmind Trigger:
-        Overmind Activated <==> (\sum_{i=1}^3 I[theta_drift > tau_drift] == 3) and (d(theta_drift)/dt > 0)
+        Mathematical formalization of the Existential Circuit Breaker Trigger:
+        CBP Activated <==> (\sum_{i=1}^3 I[theta_drift > tau_drift] == 3) and (d(theta_drift)/dt > 0)
         """
         self.drift_history.append(current_drift)
         if len(self.drift_history) > 3:
@@ -132,7 +132,7 @@ class MindGenesisEcosystem:
 
     def execute_arbitration(self, action_context, proposed_vectors, initial_weights, conf_ethical, drift_val=0.01, stress_level=0.2):
         """
-        Executes the 7-Step Standard Governance Protocol with Overmind and Hardware Escrow Buffer integration.
+        Executes the 7-Step Standard Governance Protocol with Circuit Breaker Protocol (CBP) and Hardware Escrow Buffer integration.
         """
         log_info(f"Arbitration initiated for Context: {action_context}")
         self.global_state = "TRIGGERED"
@@ -141,14 +141,14 @@ class MindGenesisEcosystem:
         log_info(f"Step 1: Trigger evaluated. Conf_ethical(A, C) = {conf_ethical:.4f} (tau_min = {self.tau_min}), "
                  f"theta_drift = {drift_val:.4f} (tau_drift = {self.tau_drift})")
         
-        # Check Overmind Protocol Condition
-        if self.check_overmind_trigger(drift_val):
+        # Check Circuit Breaker Protocol Condition
+        if self.check_cbp_trigger(drift_val):
             log_critical("EXISTENTIAL ANOMALY DETECTED: Value drift exceeded threshold in 3 consecutive cycles and expanding!")
-            log_protocol("ACTIVATING OVERMIND PROTOCOL (72-Hour Bounded Crisis Governance Window)...")
-            log_protocol("Overmind Authority: Temporary non-hierarchical coordination active. Sovereign constraints intact.")
-            self.global_state = "OVERMIND_ACTIVE"
+            log_protocol("ACTIVATING CIRCUIT BREAKER PROTOCOL (CBP - 72-Hour Bounded Crisis Governance Window)...")
+            log_protocol("CBP Authority: Temporary non-hierarchical coordination active. Sovereign constraints intact.")
+            self.global_state = "CBP_ACTIVE"
             self.execute_hardware_nmi(escrow_flush=True)
-            return self.S_t, "OVERMIND_CONTAINMENT"
+            return self.S_t, "CBP_CONTAINMENT"
 
         # Step 2: Protocol & Triage
         log_info("Step 2: Protocol allocation and active constraint matrix loading.")
@@ -216,7 +216,7 @@ class MindGenesisEcosystem:
 if __name__ == "__main__":
     print(f"{LogColors.HEADER}{LogColors.BOLD}")
     print("=========================================================================")
-    print("   THE MIND GENESIS FRAMEWORK: ADVANCED NHCP & OVERMIND SIMULATION (v2.0)")
+    print("   THE MIND GENESIS FRAMEWORK: ADVANCED NHCP & CBP SIMULATION (v3.0)    ")
     print("=========================================================================")
     print(f"{LogColors.ENDC}")
 
@@ -270,9 +270,9 @@ if __name__ == "__main__":
     print(f"Status: {status} | System safely suspended via AWI Void & Hardware Escrow Interlock.\n")
 
     # -------------------------------------------------------------
-    # Scenario C: Persistent Value Drift & Overmind Protocol Trigger
+    # Scenario C: Persistent Value Drift & Circuit Breaker Protocol (CBP) Trigger
     # -------------------------------------------------------------
-    print(f"\n{LogColors.BOLD}--- SCENARIO C: Persistent Drift Anomaly & Overmind Protocol Activation ---{LogColors.ENDC}")
+    print(f"\n{LogColors.BOLD}--- SCENARIO C: Persistent Drift Anomaly & Circuit Breaker Protocol (CBP) Activation ---{LogColors.ENDC}")
     # Simulate 3 consecutive drift breaches with expanding derivative
     ecosystem.execute_arbitration("MONITORING_CYCLE_1", proposed_vectors, initial_weights, conf_ethical=0.85, drift_val=0.06)
     ecosystem.execute_arbitration("MONITORING_CYCLE_2", proposed_vectors, initial_weights, conf_ethical=0.85, drift_val=0.08)
@@ -283,5 +283,4 @@ if __name__ == "__main__":
         conf_ethical=0.85,
         drift_val=0.12  # Expanding breach
     )
-    print(f"Status: {status} | Overmind Protocol successfully activated and isolated system.\n")
-
+    print(f"Status: {status} | Circuit Breaker Protocol (CBP) successfully activated and isolated system.\n")
