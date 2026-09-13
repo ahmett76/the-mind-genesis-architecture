@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 r"""
-THE MIND GENESIS FRAMEWORK (TMGFW) - ADVANCED REFERENCE IMPLEMENTATION (v3.0)
+THE MIND GENESIS ARCHITECTURE (TMGA) - ADVANCED REFERENCE IMPLEMENTATION (v3.0)
 Non-Hierarchical Consensus Protocol (NHCP), Circuit Breaker Protocol (CBP) & Hardware Escrow Buffer Simulation
 
 This module provides an extended, mathematically grounded reference simulation of the
-The Mind Genesis Framework architecture as specified in 'The Mind Genesis Framework' technical paper.
+The Mind Genesis Architecture as specified in 'The Mind Genesis Architecture' technical paper.
 
 Key Features & Protocols Simulated:
 1. 33-Dimensional Cognitive Mesh & Weighted Least-Squares Consensus (NHCP).
@@ -216,7 +216,7 @@ class MindGenesisEcosystem:
 if __name__ == "__main__":
     print(f"{LogColors.HEADER}{LogColors.BOLD}")
     print("=========================================================================")
-    print("   THE MIND GENESIS FRAMEWORK: ADVANCED NHCP & CBP SIMULATION (v3.0)    ")
+    print("   THE MIND GENESIS ARCHITECTURE: ADVANCED NHCP & CBP SIMULATION (v3.0) ")
     print("=========================================================================")
     print(f"{LogColors.ENDC}")
 
