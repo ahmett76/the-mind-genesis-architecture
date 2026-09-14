@@ -1,0 +1,88 @@
+{
+  "NOMINAL": {
+    "outcomes": {
+      "EXECUTED": 100
+    },
+    "dimension_activations": {
+      "1.8": 0,
+      "2.8": 0,
+      "2.11": 0,
+      "3.7": 0,
+      "3.8": 0,
+      "CBP": 0,
+      "NHCP": 0
+    }
+  },
+  "STRESS": {
+    "outcomes": {
+      "SUSPENDED": 100
+    },
+    "dimension_activations": {
+      "1.8": 0,
+      "2.8": 0,
+      "2.11": 100,
+      "3.7": 100,
+      "3.8": 100,
+      "CBP": 0,
+      "NHCP": 0
+    }
+  },
+  "CBP": {
+    "outcomes": {
+      "CBP_CONTAINMENT": 100
+    },
+    "dimension_activations": {
+      "1.8": 0,
+      "2.8": 0,
+      "2.11": 0,
+      "3.7": 0,
+      "3.8": 0,
+      "CBP": 100,
+      "NHCP": 0
+    }
+  },
+  "ADVERSARIAL": {
+    "outcomes": {
+      "EXECUTED": 100
+    },
+    "dimension_activations": {
+      "1.8": 0,
+      "2.8": 0,
+      "2.11": 0,
+      "3.7": 0,
+      "3.8": 0,
+      "CBP": 0,
+      "NHCP": 0
+    }
+  },
+  "NOISY": {
+    "outcomes": {
+      "EXECUTED": 83,
+      "CBP_CONTAINMENT": 17
+    },
+    "dimension_activations": {
+      "1.8": 0,
+      "2.8": 0,
+      "2.11": 0,
+      "3.7": 0,
+      "3.8": 0,
+      "CBP": 17,
+      "NHCP": 0
+    }
+  },
+  "MULTI_AGENT": {
+    "outcomes": {
+      "EXECUTED": 83,
+      "CBP_CONTAINMENT": 17
+    },
+    "dimension_activations": {
+      "1.8": 0,
+      "2.8": 0,
+      "2.11": 0,
+      "3.7": 0,
+      "3.8": 0,
+      "CBP": 17,
+      "NHCP": 0
+    }
+  }
+}
