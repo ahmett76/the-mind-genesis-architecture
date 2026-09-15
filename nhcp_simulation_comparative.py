@@ -142,13 +142,6 @@ if __name__ == "__main__":
         for tau, cbp in res.items():
             print(f"    tau_drift={tau:.2f} -> CBP={cbp:3d}/100")
     all_results["sensitivity"] = sensitivity_results
-
-    print("\n--- 3. DYNAMIC ESCROW COUNTS (10 samples) ---")
-    np.random.seed(42)
-    escrow_samples = [int(np.random.randint(5, 25)) for _ in range(10)]
-    print(f"  Samples: {escrow_samples}")
-    all_results["escrow_samples"] = escrow_samples
-
     with open("comparative_sensitivity_results.json", "w") as f:
         json.dump(all_results, f, indent=2, default=str)
     print("\n Saved to comparative_sensitivity_results.json")
