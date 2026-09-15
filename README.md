@@ -32,9 +32,6 @@ pip install numpy
 Clone the repository
 git clone https://github.com/ahmett76/the-mind-genesis-architecture.git
 cd the-mind-genesis-architecture
----
-
-**2. PARÇA** (bunu hemen altına yapıştır):
 Simulation Execution (Sections 8.5 – 8.9)
 1. Base Simulation — Section 8.5 / Table 9
 NOMINAL, STRESS, and CBP scenarios (100 runs each).
