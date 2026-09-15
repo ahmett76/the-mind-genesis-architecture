@@ -2,7 +2,6 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/)
-[![arXiv](https://img.shields.io/badge/arXiv-2609.0734-B31B1B.svg)](https://arxiv.org/)
 
 This repository contains the official reference implementation and strategic roadmap for **The Mind Genesis Architecture (TMGA)**, a 33-dimensional transdisciplinary architecture designed for the transition from tool-based computation to a **Shared Intelligence Ecosystem**.
 
@@ -24,32 +23,78 @@ The architecture translates philosophical principles into deterministic, hardwar
 ## Getting Started
 
 ### Prerequisites
+
 - Python 3.9+ (Python 3.12 recommended)
-- `numpy` (optional)
+- All simulation scripts use Python standard libraries only (`math`, `time`, `json`). No third-party dependencies are required.
+
+### Clone the Repository
 
 ```bash
-pip install numpy
-Clone the repository
 git clone https://github.com/ahmett76/the-mind-genesis-architecture.git
 cd the-mind-genesis-architecture
-Simulation Execution (Sections 8.5 – 8.9)
-1. Base Simulation — Section 8.5 / Table 9
-NOMINAL, STRESS, and CBP scenarios (100 runs each).
+```
+
+---
+
+## Running the Simulations
+
+Each simulation script corresponds to a specific section and table in the manuscript.
+
+| Script | Section | Table | Scenarios |
+|--------|---------|-------|-----------|
+| `nhcp_simulation.py` | 8.5 | Table 9 | NOMINAL, STRESS, CBP |
+| `nhcp_simulation_advanced.py` | 8.6 | Table 10 | ADVERSARIAL, NOISY, MULTI-AGENT + Ablation |
+| `nhcp_simulation_comparative.py` | 8.7–8.8 | Tables 11–12 | Comparative + Sensitivity |
+| `nhcp_simulation_extended.py` | 8.9 | Table 13 | Extended 7-dimension |
+
+### 1. Base Simulation — Section 8.5 / Table 9
+
+NOMINAL, STRESS, and CBP scenarios, 100 runs each.
+
+```bash
 python nhcp_simulation.py
-Expected behavior: Fully deterministic outcomes (100/100) matching Table 9.
-2. Advanced + Ablation Simulation — Section 8.6 / Table 10
-ADVERSARIAL, NOISY, MULTI-AGENT scenarios + ablation study.
+```
+
+Expected behavior: fully deterministic outcomes (100/100) matching Table 9 of the manuscript.
+
+### 2. Advanced + Ablation Simulation — Section 8.6 / Table 10
+
+ADVERSARIAL, NOISY, and MULTI-AGENT scenarios, plus the ablation study (FULL_ARCHITECTURE, NO_CBP, NO_TRIAGE, NO_NMI).
+
+```bash
 python nhcp_simulation_advanced.py
-Results written to advanced_simulation_results.json (matches Table 10).
-3. Comparative Evaluation + Sensitivity — Sections 8.7–8.8 / Tables 11–12
-Compares TMGA predicate vs. single-breach and average baselines, plus τ_drift sensitivity analysis.
+```
+
+Expected behavior: matches Table 10 of the manuscript. Raw numerical results are written to `advanced_simulation_results.json`.
+
+### 3. Comparative + Sensitivity Simulation — Sections 8.7–8.8 / Tables 11–12
+
+Compares three CBP activation strategies (TMGA, single-breach, average) across ADVERSARIAL, NOISY, and MULTI-AGENT scenarios, and evaluates sensitivity to the drift threshold τ.
+
+```bash
 python nhcp_simulation_comparative.py
-Results written to comparative_sensitivity_results.json (matches Tables 11 and 12).
-4. Extended Multi-Dimensional Simulation — Section 8.9 / Table 13
-Seven critical dimensions active simultaneously (AGI Guard, ASI Guard, ASI Verify, AWI Void, AWI Sentry, CBP, NHCP).
+```
+
+Expected behavior: matches Tables 11 and 12 of the manuscript. Raw numerical results are written to `comparative_sensitivity_results.json`.
+
+### 4. Extended Multi-Dimensional Simulation — Section 8.9 / Table 13
+
+Seven critical dimensions active simultaneously: AGI Guard, ASI Guard, ASI Verify, AWI Void, AWI Sentry, CBP, and NHCP.
+
+```bash
 python nhcp_simulation_extended.py
-Results written to extended_simulation_results.json (matches Table 13).
-Empirical Consistency Note
+```
+
+Expected behavior: matches Table 13 of the manuscript. Raw numerical results are written to `extended_simulation_results.json`.
+
+---
+
+## Empirical Consistency Note
+
 All simulation scripts implement the formal activation predicates and governance logic described in the paper. The numerical results stored in the JSON files correspond to the tables reported in Sections 8.5–8.9.
-License
+
+---
+
+## License
+
 MIT License
