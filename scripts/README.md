@@ -26,3 +26,14 @@ python nhcp_simulation.py
 python nhcp_simulation_advanced.py
 python nhcp_simulation_comparative.py
 python nhcp_simulation_extended.py
+```
+
+Raw numerical results are written to JSON files in the repository root:
+
+- `advanced_simulation_results.json`
+- `comparative_sensitivity_results.json`
+- `extended_simulation_results.json`
+
+## Important
+
+These are reference simulations, not production implementations. The scenario parameters are illustrative and have not been empirically calibrated. Results should be interpreted as simulation-level behavioral observations, not as evidence of real-world system security or robustness.
