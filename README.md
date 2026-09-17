@@ -17,3 +17,20 @@ The architecture translates philosophical principles into deterministic, hardwar
 2. **Cryptographic Proof Layers (ZKP):** Uses Zero-Knowledge Proofs to verify safety predicates of opaque reasoning paths without revealing internal data.
 3. **Asynchronous Shadow Auditing:** Parallel monitoring via AWI Sentry to detect value and policy drift without blocking primary execution.
 4. **Hardware-Level Enforcement (NMI):** A physical Non-Maskable Interrupt that suspends execution and isolates actuators when ethical confidence falls below safe thresholds.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.9+ (Python 3.12 recommended)
+- All simulation scripts use Python standard libraries only (`math`, `time`, `json`). No third-party dependencies are required.
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/ahmett76/the-mind-genesis-architecture.git
+cd the-mind-genesis-architecture
+
+````
