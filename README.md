@@ -94,6 +94,17 @@ Expected behavior: matches Table 13 of the manuscript. Raw numerical results are
 All simulation scripts implement the formal activation predicates and governance logic described in the paper. The numerical results stored in the JSON files correspond to the tables reported in Sections 8.5–8.9.
 
 ---
+---
+
+## Installation as a Python Package
+
+The repository can be installed as a local Python package:
+
+```bash
+git clone https://github.com/ahmett76/the-mind-genesis-architecture.git
+cd the-mind-genesis-architecture
+pip install -e .
+---
 
 ## License
 
