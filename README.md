@@ -18,7 +18,15 @@ TMGA models intelligence across three coexisting, non-hierarchical operational v
 * **Sphere I: AGI (Breadth - 13 Dimensions):** Systemic cognitive scope, cross-domain reasoning, and formal property checks.
 * **Sphere II: ASI (Scale - 11 Dimensions):** Hyper-scale computational reach, cryptographic barriers, and structural containment.
 * **Sphere III: AWI (Meaning & Responsible Restraint - 9 Dimensions):** Teleological evaluation, Socratic epistemic humility, and normative restraint.
+* * *
 
+## 🗺️ Architecture Map
+
+The 33-dimensional non-hierarchical cognitive interaction map shows coexisting pathways across the AGI, ASI, and AWI spheres.
+
+![TMGA Architecture Map](interaction_map.png)
+
+*Figure 1 from Section 5 of the paper. The map illustrates the non-hierarchical interaction between the three spheres: AGI (Breadth), ASI (Scale), and AWI (Meaning and Responsible Restraint).*
 ---
 
 ## 🛠️ Key Engineering Protocols
