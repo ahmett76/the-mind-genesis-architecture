@@ -36,39 +36,32 @@ TMGA translates philosophical principles into deterministic, hardware-enforced g
 ## 📁 Repository Structure
 
 ```text
+```text
 the-mind-genesis-architecture/
 ├── README.md                           # Project homepage & technical overview
 ├── LICENSE                             # MIT License
 ├── pyproject.toml                      # Modern Python build configuration
-├── setup.py                            # Package installation script
 ├── src/                                # Core TMGA Source Code
 │   └── tmga/
-│       ├── __init__.py
-│       ├── core.py                     # 33-Dim Taxonomy, Conf_ethical & C_AWI predicate
-│       ├── protocols/
-│       │   ├── nhcp.py                 # Non-Hierarchical Consensus Protocol
-│       │   └── cbp.py                  # Circuit Breaker Protocol (Equation 1)
-│       ├── auditing/
-│       │   └── shadow.py               # Asynchronous Shadow Auditing & KL-Divergence
-│       └── hardware/
-│           └── containment.py          # Hardware Escrow Buffers & NMI triggers
+│       ├── __init__.py                 # Package version
+│       └── core.py                     # Conf_ethical & CBP activation predicate
 ├── scripts/                            # Reference Simulation Executables
-│   ├── README.md
+│   ├── README.md                       # Simulation directory description
 │   ├── nhcp_simulation.py              # Base simulation (Section 8.5, Table 9)
 │   ├── nhcp_simulation_advanced.py     # Advanced & Ablation simulation (Section 8.6, Table 10)
 │   ├── nhcp_simulation_comparative.py  # Comparative & Sensitivity analysis (Sections 8.7-8.8, Tables 11-12)
 │   └── nhcp_simulation_extended.py     # Extended 7-dimension simulation (Section 8.9, Table 13)
 ├── proofs/                             # Formal Verification Assets
-│   ├── zkp/
-│   │   └── safety_check.circom         # Circom 2.1 ZK-SNARK Arithmetic Circuit
-│   └── tla/
-│       └── TMGA_Governance.tla         # TLA+ Formal Specification Model
+│   └── zkp/
+│       ├── README.md                   # Directory description
+│       └── safety_check.circom         # Circom 2.1 ZK-SNARK Arithmetic Circuit
 ├── docs/                               # Regulatory Compliance & Verification Documents
 │   ├── TMGA_NIST_ISO_Compliance_Matrix.pdf
-│   ├── TMGA_MultiAgent_Testbed_Simulation.pdf
+│   └── TMGA_MultiAgent_Testbed_Simulation.pdf
 ├── advanced_simulation_results.json    # Raw numerical output for Section 8.6
 ├── comparative_sensitivity_results.json# Raw numerical output for Sections 8.7-8.8
 └── extended_simulation_results.json   # Raw numerical output for Section 8.9
+```
 ```
 
 ---
