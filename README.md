@@ -65,8 +65,7 @@ the-mind-genesis-architecture/
 │       └── TMGA_Governance.tla         # TLA+ Formal Specification Model
 ├── docs/                               # Regulatory Compliance & Verification Documents
 │   ├── TMGA_NIST_ISO_Compliance_Matrix.pdf
-│   ├── TMGA_ZKP_TLA_Formal_Verification.pdf
-│   └── TMGA_MultiAgent_Testbed_Simulation.pdf
+│   ├── TMGA_MultiAgent_Testbed_Simulation.pdf
 ├── advanced_simulation_results.json    # Raw numerical output for Section 8.6
 ├── comparative_sensitivity_results.json# Raw numerical output for Sections 8.7-8.8
 └── extended_simulation_results.json   # Raw numerical output for Section 8.9
