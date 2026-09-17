@@ -113,7 +113,7 @@ else:
 
 ## 🧪 Running the Reference Simulations
 
-Each simulation script reproduces the empirical tables reported in Sections 8.5 to 8.9 of the manuscript:
+Each simulation script reproduces the simulation tables reported in Sections 8.5 to 8.9 of the manuscript:
 
 ### 1. Base Simulation (Section 8.5, Table 9)
 Evaluates `NOMINAL`, `STRESS`, and `CBP` scenarios (100 runs each).
