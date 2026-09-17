@@ -161,9 +161,9 @@ If you use TMGA, its 33-dimensional taxonomy, or the simulation testbeds in your
 ```bibtex
 @article{themindgenesis2026tmga,
   title={The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems},
-  author={The Mind Genesis},
-  journal={arXiv preprint},
-  year={2026},
+  author=
+  journal=
+  year=
   url={https://github.com/ahmett76/the-mind-genesis-architecture}
 }
 ```
