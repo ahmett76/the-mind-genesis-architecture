@@ -6,7 +6,7 @@
 [![Verification](https://img.shields.io/badge/Formal%20Proof-Circom-purple.svg)](proofs/)
 
 > **Reference simulation code and supporting materials for selected mechanisms described in The Mind Genesis Architecture (TMGA):**  
-> *"The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems"* (September 2026)
+> *"The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems"* (2026)
 
 ---
 
