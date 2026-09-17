@@ -58,9 +58,8 @@ the-mind-genesis-architecture/
 ├── comparative_sensitivity_results.json   # Raw numerical output for Sections 8.7–8.8
 ├── extended_simulation_results.json       # Raw numerical output for Section 8.9
 └── pyproject.toml                         # Modern Python build configuration
-```
---- 
-                                                
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
