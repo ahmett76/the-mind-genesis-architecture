@@ -179,6 +179,18 @@ If you use TMGA, its 33-dimensional taxonomy, or the simulation testbeds in your
 
 ---
 
+
+---
+
+## Cryptographic Proofs (Illustrative)
+
+The `proofs/zkp/` directory contains a simplified Circom circuit
+(`safety_check.circom`) illustrating the cryptographic verification
+relation described in Section 8.2 of the paper.
+
+These examples are provided for illustration only. They are not
+production-grade circuits and have not been formally audited.
+
 ## 📜 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
