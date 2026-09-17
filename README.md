@@ -58,14 +58,16 @@ the-mind-genesis-architecture/
 ├── comparative_sensitivity_results.json   # Raw numerical output for Sections 8.7–8.8
 ├── extended_simulation_results.json       # Raw numerical output for Section 8.9
 └── pyproject.toml                         # Modern Python build configuration
----
+```
 
 ---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
-* **Python 3.9 or higher** (Python 3.12 recommended).
-* Standard libraries only (`math`, `time`, `json`, `unittest`) for simulation scripts; no third-party dependencies required.
+
+- **Python 3.9 or higher** (Python 3.12 recommended)
+- Standard libraries only (`math`, `time`, `json`, `unittest`) for simulation scripts; no third-party dependencies required.
 
 ### Installation as a Local Package
 
