@@ -122,6 +122,7 @@ cd scripts
 python nhcp_simulation.py
 ```
 *Expected Outcome:* Deterministic 100/100 convergence per scenario matching Table 9.
+This reflects deterministic execution of the predefined simulation rules, not empirical validation or a real-world safety guarantee.
 
 ### 2. Advanced & Ablation Simulation (Section 8.6, Table 10)
 Evaluates `ADVERSARIAL`, `NOISY`, and `MULTI-AGENT` scenarios alongside ablation (`NO_CBP`, `NO_TRIAGE`, `NO_NMI`).
