@@ -3,7 +3,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.9%2B%20%2F%203.12-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Compliance](https://img.shields.io/badge/NIST%20AI%20RMF-Mapped-orange.svg)](docs/TMGA_NIST_ISO_Compliance_Matrix.pdf)
-[![Verification](https://img.shields.io/badge/Formal%20Proof-TLA%2B%20%2F%20Circom-purple.svg)](proofs/)
+[![Verification](https://img.shields.io/badge/Formal%20Proof-Circom-purple.svg)](proofs/)
 
 > **Official Reference Implementation for the Paper:**  
 > *"The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems"* (September 2026)
