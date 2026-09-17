@@ -149,7 +149,7 @@ python nhcp_simulation_extended.py
 
 ## 📊 Regulatory Compliance & Formal Verification
 
-* **NIST AI RMF 1.0 & ISO/IEC 42001:** FProposed mapping to NIST AI RMF 1.0 and ISO/IEC 42001 functions. See [docs/TMGA_NIST_ISO_Compliance_Matrix.pdf).
+* **NIST AI RMF 1.0 & ISO/IEC 42001:** FProposed mapping to NIST AI RMF 1.0 and ISO/IEC 42001 functions. See (docs/TMGA_MultiAgent_Testbed_Simulation.pdf).
 * **Illustrative Circom Circuit:** A minimal example of the cryptographic verification relation described in Section 8.2. See [proofs/zkp/safety_check.circom](proofs/zkp/safety_check.circom).
 * **Exploratory Multi-Agent Testbed:** Additional runtime conflict-resolution scenarios (not part of the main paper results). See [docs/TMGA_MultiAgent_Testbed_Simulation.pdf](docs/TMGA_MultiAgent_Testbed_Simulation.pdf).
   
