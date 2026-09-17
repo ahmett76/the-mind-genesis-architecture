@@ -81,9 +81,6 @@ Empirical Consistency Note
 All simulation scripts implement the formal activation predicates and governance logic described in the paper. The numerical results stored in the JSON files correspond to the tables reported in Sections 8.5–8.9.
 text
 
-
-## BÖLÜM 4 — Python Package
-
 Installation as a Python Package
 
 The repository can be installed as a local Python package:
@@ -134,9 +131,6 @@ the-mind-genesis-architecture/
 └── *_simulation_results.json
 
 text
-
-
-## BÖLÜM 5 — License
 
 License
 
