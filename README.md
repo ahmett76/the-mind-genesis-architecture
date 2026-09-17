@@ -36,7 +36,6 @@ TMGA translates philosophical principles into deterministic, hardware-enforced g
 ## 📁 Repository Structure
 
 ```text
-```text
 the-mind-genesis-architecture/
 ├── README.md                           # Project homepage & technical overview
 ├── LICENSE                             # MIT License
