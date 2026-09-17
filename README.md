@@ -60,9 +60,10 @@ the-mind-genesis-architecture/
 └── pyproject.toml                         # Modern Python build configuration
 ```
 
----
+
 ## 🚀 Getting Started
 
+```text
 ### Prerequisites
 
 - **Python 3.9 or higher** (Python 3.12 recommended)
