@@ -23,13 +23,13 @@ TMGA models intelligence across three coexisting, non-hierarchical operational v
 
 ## 🛠️ Key Engineering Protocols
 
-TMGA translates philosophical principles into deterministic, hardware-enforced governance through four core protocols:
+TMGA translates philosophical principles into deterministic, hardware-enforced governance through five core protocols:
 
-1. **Non-Hierarchical Consensus Protocol (NHCP):** Resolves coordination conflicts between dimensions without establishing a permanent hierarchy.
-2. **Cryptographic Proof Layers (ZKP):** Uses Zero-Knowledge Proofs (zk-SNARKs / zkVMs) to verify safety predicates of opaque reasoning paths without revealing internal weights or data ($\mathcal{R} = \{(x, w) \mid \Phi(x, w) = 1\}$).
-3. **Asynchronous Shadow Auditing:** Parallel out-of-band monitoring via `AWI Sentry` to detect value and policy drift ($\theta_{drift} = D_{KL}(V_{target} \parallel V_{actual})$) without blocking execution latency.
-4. **Hardware-Level Enforcement (NMI):** A physical Non-Maskable Interrupt that suspends execution and isolates actuators when ethical confidence falls below safe thresholds ($Conf_{ethical} < \tau_{min}$).
-5. **Circuit Breaker Protocol (CBP):** A crisis-governance mechanism that trips under persistent, monotonic goal drift across consecutive auditing cycles.
+  1. **Non-Hierarchical Consensus Protocol (NHCP):** Resolves coordination conflicts between dimensions without establishing a permanent hierarchy.
+  2. **Cryptographic Proof Layers (ZKP):** Uses Zero-Knowledge Proofs (zk-SNARKs / zkVMs) to verify safety predicates of opaque reasoning paths without revealing internal weights or data. The verification relation is formalized as `R = {(x, w) | Φ(x, w) = 1}`.
+  3. **Asynchronous Shadow Auditing:** Parallel out-of-band monitoring via `AWI Sentry` to detect value and policy drift (`θ_drift = D_KL(V_target || V_actual)`) without blocking execution latency.
+  4. **Hardware-Level Enforcement (NMI):** A physical Non-Maskable Interrupt that suspends execution and isolates actuators when ethical confidence falls below safe thresholds (`Conf_ethical < τ_min`).
+  5. **Circuit Breaker Protocol (CBP):** A crisis-governance mechanism that trips under persistent, monotonic goal drift across consecutive auditing cycles.
 
 ---
 
