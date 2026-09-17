@@ -59,7 +59,6 @@ the-mind-genesis-architecture/
 ├── extended_simulation_results.json       # Raw numerical output for Section 8.9
 └── pyproject.toml                         # Modern Python build configuration
 ```
-```
 
 ---
 
