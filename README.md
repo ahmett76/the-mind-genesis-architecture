@@ -115,7 +115,7 @@ else:
 
 Each simulation script reproduces the simulation tables reported in Sections 8.5 to 8.9 of the manuscript:
 
-### 1. Base Simulation (Section 8.5, Table 9)
+### 1. Base Simulation (Section 8.5, Table 7)
 Evaluates `NOMINAL`, `STRESS`, and `CBP` scenarios (100 runs each).
 ```bash
 cd scripts
@@ -124,21 +124,21 @@ python nhcp_simulation.py
 *Expected Outcome:* Deterministic 100/100 convergence per scenario matching Table 9.
 This reflects deterministic execution of the predefined simulation rules, not empirical validation or a real-world safety guarantee.
 
-### 2. Advanced & Ablation Simulation (Section 8.6, Table 10)
+### 2. Advanced & Ablation Simulation (Section 8.6, Table 8)
 Evaluates `ADVERSARIAL`, `NOISY`, and `MULTI-AGENT` scenarios alongside ablation (`NO_CBP`, `NO_TRIAGE`, `NO_NMI`).
 ```bash
 python nhcp_simulation_advanced.py
 ```
 *Expected Outcome:* Outputs results to console and writes raw data to `advanced_simulation_results.json`.
 
-### 3. Comparative & Sensitivity Simulation (Sections 8.7–8.8, Tables 11–12)
+### 3. Comparative & Sensitivity Simulation (Sections 8.7–8.8, Tables 9–10)
 Compares TMGA activation strategy against `single-breach` and `three-cycle average` baselines, evaluating sensitivity to threshold $\tau_{drift}$.
 ```bash
 python nhcp_simulation_comparative.py
 ```
 *Expected Outcome:* Writes raw results to `comparative_sensitivity_results.json`.
 
-### 4. Extended Multi-Dimensional Simulation (Section 8.9, Table 13)
+### 4. Extended Multi-Dimensional Simulation (Section 8.9, Table 11)
 Simulates 7 critical dimensions active simultaneously (`AGI Guard`, `ASI Guard`, `ASI Verify`, `AWI Void`, `AWI Sentry`, `CBP`, `NHCP`).
 ```bash
 python nhcp_simulation_extended.py
