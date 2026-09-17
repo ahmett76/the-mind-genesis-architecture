@@ -104,7 +104,35 @@ The repository can be installed as a local Python package:
 git clone https://github.com/ahmett76/the-mind-genesis-architecture.git
 cd the-mind-genesis-architecture
 pip install -e .
----
+This provides the tmga module with reference implementations of the core
+TMGA mechanisms described in the paper.
+Quick Start
+from tmga.core import conf_ethical, cbp_triggered
+
+confidence = conf_ethical(
+    rule_compliances=[1.0, 0.95, 0.90],
+    rule_weights=[0.4, 0.3, 0.3],
+    predictive_uncertainty=0.10,
+)
+print(f"Conf_ethical = {confidence:.3f}")
+
+drift_samples = [0.06, 0.08, 0.12]
+if cbp_triggered(drift_samples, tau_drift=0.05):
+    print("CBP activated: persistent drift detected")
+Repository Structure
+the-mind-genesis-architecture/
+├── pyproject.toml
+├── src/tmga/
+│   ├── __init__.py
+│   └── core.py
+├── scripts/
+│   ├── nhcp_simulation.py
+│   ├── nhcp_simulation_advanced.py
+│   ├── nhcp_simulation_comparative.py
+│   └── nhcp_simulation_extended.py
+├── docs/
+│   └── TMGA_NIST_ISO_Compliance_Matrix.pdf
+└── README.md
 
 ## License
 
