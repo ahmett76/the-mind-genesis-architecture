@@ -60,6 +60,7 @@ the-mind-genesis-architecture/
 └── pyproject.toml                         # Modern Python build configuration
 ```
 --- 
+
 ---                                                 
 ## 🚀 Getting Started
 
