@@ -82,30 +82,22 @@ pip install -e .
 ### Quick Start Code Example
 
 ```python
-from tmga.core import TMGASystemState, ExecutionState
-from tmga.protocols.cbp import CircuitBreakerProtocol
+from tmga.core import conf_ethical, cbp_triggered
 
-# 1. Initialize System State and CBP
-state = TMGASystemState()
-cbp = CircuitBreakerProtocol(tau_drift=0.05)
-
-# 2. Evaluate Ethical Confidence Metric (Section 4.2)
-confidence = state.calculate_ethical_confidence(
+# 1. Evaluate Ethical Confidence Metric (Section 4.2)
+confidence = conf_ethical(
     rule_compliances=[1.0, 0.95, 0.90],
     rule_weights=[0.4, 0.3, 0.3],
     predictive_uncertainty=0.10
 )
 print(f"Conf_ethical = {confidence:.4f}")
 
-# 3. Check C_AWI Validation Predicate
-if not state.validate_c_awi(confidence, tau_min=0.70):
-    print(f"Action Suspended! State: {state.execution_state}")
-
-# 4. Monitor Circuit Breaker Trigger (Section 11.1.1)
+# 2. Check Circuit Breaker Protocol trigger (Section 11.1.1)
 drift_samples = [0.06, 0.08, 0.12]
-for drift in drift_samples:
-    if cbp.update_drift(drift):
-        print("CBP Activated: Persistent monotonic drift detected!")
+if cbp_triggered(drift_samples, tau_drift=0.05):
+    print("CBP Activated: Persistent monotonic drift detected!")
+else:
+    print("CBP not triggered.")
 ```
 
 ---
