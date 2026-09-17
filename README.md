@@ -34,3 +34,49 @@ git clone https://github.com/ahmett76/the-mind-genesis-architecture.git
 cd the-mind-genesis-architecture
 
 ````
+
+---
+
+## Running the Simulations
+
+Each simulation script corresponds to a specific section and table in the manuscript.
+
+| Script | Section | Table | Scenarios |
+|--------|---------|-------|-----------|
+| `nhcp_simulation.py` | 8.5 | Table 9 | NOMINAL, STRESS, CBP |
+| `nhcp_simulation_advanced.py` | 8.6 | Table 10 | ADVERSARIAL, NOISY, MULTI-AGENT + Ablation |
+| `nhcp_simulation_comparative.py` | 8.7–8.8 | Tables 11–12 | Comparative + Sensitivity |
+| `nhcp_simulation_extended.py` | 8.9 | Table 13 | Extended 7-dimension |
+
+### 1. Base Simulation — Section 8.5 / Table 9
+
+NOMINAL, STRESS, and CBP scenarios, 100 runs each.
+
+```bash
+cd scripts
+python nhcp_simulation.py
+Expected behavior: fully deterministic outcomes (100/100) matching Table 9 of the manuscript.
+2. Advanced + Ablation Simulation — Section 8.6 / Table 10
+
+ADVERSARIAL, NOISY, and MULTI-AGENT scenarios, plus the ablation study (FULL_ARCHITECTURE, NO_CBP, NO_TRIAGE, NO_NMI).
+cd scripts
+python nhcp_simulation_advanced.py
+Expected behavior: matches Table 10 of the manuscript. Raw numerical results are written to advanced_simulation_results.json.
+3. Comparative + Sensitivity Simulation — Sections 8.7–8.8 / Tables 11–12
+
+Compares three CBP activation strategies (TMGA, single-breach, average) across ADVERSARIAL, NOISY, and MULTI-AGENT scenarios, and evaluates sensitivity to the drift threshold τ.
+cd scripts
+python nhcp_simulation_comparative.py
+Expected behavior: matches Tables 11 and 12 of the manuscript. Raw numerical results are written to comparative_sensitivity_results.json.
+4. Extended Multi-Dimensional Simulation — Section 8.9 / Table 13
+
+Seven critical dimensions active simultaneously: AGI Guard, ASI Guard, ASI Verify, AWI Void, AWI Sentry, CBP, and NHCP.
+cd scripts
+python nhcp_simulation_extended.py
+Expected behavior: matches Table 13 of the manuscript. Raw numerical results are written to extended_simulation_results.json.
+Empirical Consistency Note
+
+All simulation scripts implement the formal activation predicates and governance logic described in the paper. The numerical results stored in the JSON files correspond to the tables reported in Sections 8.5–8.9.
+```
+
+
