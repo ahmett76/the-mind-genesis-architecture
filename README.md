@@ -5,7 +5,7 @@
 [![Compliance](https://img.shields.io/badge/NIST%20AI%20RMF-Mapped-orange.svg)](docs/TMGA_NIST_ISO_Compliance_Matrix.pdf)
 [![Verification](https://img.shields.io/badge/Formal%20Proof-Circom-purple.svg)](proofs/)
 
-> **Official Reference Implementation for the Paper:**  
+> **Reference simulation code and supporting materials for selected mechanisms described in The Mind Genesis Architecture (TMGA):**  
 > *"The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems"* (September 2026)
 
 ---
@@ -31,12 +31,12 @@ The 33-dimensional non-hierarchical cognitive interaction map shows coexisting p
 
 ## 🛠️ Key Engineering Protocols
 
-TMGA translates philosophical principles into deterministic, hardware-enforced governance through five core protocols:
+TMGA proposes a deterministic governance model that can be evaluated through simulation and, in future work, mapped to hardware-level enforcement mechanisms:
 
   1. **Non-Hierarchical Consensus Protocol (NHCP):** Resolves coordination conflicts between dimensions without establishing a permanent hierarchy.
   2. **Cryptographic Proof Layers (ZKP):** Uses Zero-Knowledge Proofs (zk-SNARKs / zkVMs) to verify safety predicates of opaque reasoning paths without revealing internal weights or data. The verification relation is formalized as `R = {(x, w) | Φ(x, w) = 1}`.
   3. **Asynchronous Shadow Auditing:** Parallel out-of-band monitoring via `AWI Sentry` to detect value and policy drift (`θ_drift = D_KL(V_target || V_actual)`) without blocking execution latency.
-  4. **Hardware-Level Enforcement (NMI):** A physical Non-Maskable Interrupt that suspends execution and isolates actuators when ethical confidence falls below safe thresholds (`Conf_ethical < τ_min`).
+  4. **Hardware-Level Enforcement (NMI):** A simulated Non-Maskable Interrupt sequence that models execution suspension and actuator isolation when predefined safety conditions are violated. (`Conf_ethical < τ_min`).
   5. **Circuit Breaker Protocol (CBP):** A crisis-governance mechanism that trips under persistent, monotonic goal drift across consecutive auditing cycles.
 
 ---
