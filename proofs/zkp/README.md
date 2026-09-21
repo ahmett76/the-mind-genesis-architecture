@@ -1,12 +1,16 @@
-# Zero-Knowledge Proof Examples
+# Illustrative Zero-Knowledge Constraint Example
 
-This directory contains illustrative Circom circuits for the cryptographic verification relation described in Section 8.2 of the paper. The main example is [`safety_check.circom`](safety_check.circom).
+This directory contains a minimal Circom example accompanying the
+cryptographic-verifiability discussion in The Mind Genesis Architecture
+(TMGA).
 
-## Important
+The main example is:
 
-These are simplified examples intended to demonstrate the structure of the cryptographic relation. They are not production circuits and have not been formally audited.
+[`safety_check.circom`](safety_check.circom)
 
-## Related Sections
+## Purpose
 
-- Paper Section 8.2: Cryptographic Verifiability for Opaque Architectures
-- Verification relation: `R = {(x, w) | Φ(x, w) = 1}`
+The circuit illustrates a verification relation of the form:
+
+```text
+R = {(x, w) | Φ(x, w) = 1}
