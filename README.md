@@ -59,7 +59,7 @@ the-mind-genesis-architecture/
 ├── docs/                                  # Supplementary Governance & Verification Documents
 │   ├── TMGA_NIST_ISO_Compliance_Matrix.pdf
 │   └── TMGA_MultiAgent_Testbed_Simulation.pdf
-├── proofs/zkp/                            # Illustrative Formal Verification Assets
+├── proofs/zkp/                            # Illustrative Cryptographic Verification Assets
 │   ├── README.md
 │   └── safety_check.circom                # Illustrative Circom 2.1 arithmetic circuit
 ├── scripts/                               # Reference Simulation Executables
@@ -191,7 +191,7 @@ The extended simulation evaluates the core governance pathway with seven critica
 
 ---
 
-## 📊 Regulatory Mapping & Formal Verification Materials
+## 📊 Regulatory Mapping & Cryptographic Verification Materials
 
 * **NIST AI RMF 1.0 & ISO/IEC 42001:** Supplementary mapping of proposed TMGA mechanisms to selected NIST AI RMF 1.0 and ISO/IEC 42001 functions. This mapping is architectural documentation and should not be interpreted as certification or demonstrated regulatory compliance. See [docs/TMGA_NIST_ISO_Compliance_Matrix.pdf](docs/TMGA_NIST_ISO_Compliance_Matrix.pdf).
 
