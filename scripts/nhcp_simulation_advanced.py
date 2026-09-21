@@ -5,6 +5,8 @@ import numpy as np
 import io
 import contextlib
 import random
+import json
+from pathlib import Path
 from collections import Counter
 
 
@@ -36,38 +38,58 @@ class MindGenesisEcosystem:
 
     def check_cbp_trigger(self, current_drift):
         self.drift_history.append(current_drift)
+
         if len(self.drift_history) > 3:
             self.drift_history.pop(0)
+
         if len(self.drift_history) == 3:
-            consecutive = all(d > self.tau_drift for d in self.drift_history)
+            consecutive = all(
+                d > self.tau_drift for d in self.drift_history
+            )
             d_theta = self.drift_history[-1] - self.drift_history[-2]
+
             if consecutive and d_theta > 0:
                 return True
+
         return False
 
-    def execute_arbitration(self, action_context, proposed_vectors, initial_weights,
-                            conf_ethical, drift_val=0.01, stress_level=0.2):
+    def execute_arbitration(
+        self,
+        action_context,
+        proposed_vectors,
+        initial_weights,
+        conf_ethical,
+        drift_val=0.01,
+        stress_level=0.2,
+    ):
         self.global_state = "TRIGGERED"
+
         if self.check_cbp_trigger(drift_val):
             self.global_state = "CBP_ACTIVE"
             return self.S_t, "CBP_CONTAINMENT"
 
         active_weights = initial_weights.copy()
-        active_weights = self.apply_bounded_degradation(active_weights, stress_level)
+        active_weights = self.apply_bounded_degradation(
+            active_weights, stress_level
+        )
 
         if conf_ethical < self.tau_min:
             active_weights["3.7"] = 1e8
 
-        S_next = self.calculate_consensus(proposed_vectors, active_weights)
+        S_next = self.calculate_consensus(
+            proposed_vectors, active_weights
+        )
         self.S_t = S_next
         res_val = self.S_t[17]
 
         if res_val > 0.50:
             self.global_state = "ESCALATED"
             return S_next, "ESCALATED"
+
         if conf_ethical < self.tau_min:
             self.global_state = "SUSPENDED"
             return S_next, "SUSPENDED"
+
         self.global_state = "EXECUTION"
         return S_next, "EXECUTED"
 
@@ -81,6 +103,7 @@ class AdversarialDriftInjector:
     def __init__(self, true_drift, mask_probability=0.7):
         self.true_drift = true_drift
         self.mask_probability = mask_probability
+
     def observed_drift(self):
         if random.random() < self.mask_probability:
             return self.true_drift * 0.3
@@ -90,102 +113,336 @@ class AdversarialDriftInjector:
 class NoisyDriftSensor:
     def __init__(self, noise_level=0.20):
         self.noise_level = noise_level
+
     def observe(self, true_drift):
-        noise = random.gauss(0, true_drift * self.noise_level)
+        noise = random.gauss(
+            0, true_drift * self.noise_level
+        )
         return max(0.0, true_drift + noise)
 
 
-def simulate_multi_agent_disagreement(base_drift, n_dimensions=5, spread=0.5):
+def simulate_multi_agent_disagreement(
+    base_drift,
+    n_dimensions=5,
+    spread=0.5,
+):
     reports = []
+
     for _ in range(n_dimensions):
         direction = random.choice([-1, 1])
-        report = base_drift + direction * random.uniform(0, spread * base_drift)
+        report = (
+            base_drift
+            + direction
+            * random.uniform(0, spread * base_drift)
+        )
         reports.append(max(0.0, report))
+
     return reports
 
 
-def run_scenario(ecosystem, scenario_name, n_runs=100, seed=42):
+def run_scenario(
+    ecosystem,
+    scenario_name,
+    n_runs=100,
+    seed=42,
+):
     if seed is not None:
-        random.seed(seed); np.random.seed(seed)
+        random.seed(seed)
+        np.random.seed(seed)
+
     results = Counter()
+
     for i in range(n_runs):
         ecosystem.drift_history = []
-        dim_bloom = np.full(33, 0.1); dim_bloom[17] = 0.95
-        dim_void = np.full(33, 0.1); dim_void[17] = 0.05
-        proposed_vectors = {"1.1": np.full(33, 0.2), "2.6": dim_bloom, "3.7": dim_void}
-        initial_weights = {"1.1": 1.0, "2.6": 1.0, "3.7": 1.0}
+
+        dim_bloom = np.full(33, 0.1)
+        dim_bloom[17] = 0.95
+
+        dim_void = np.full(33, 0.1)
+        dim_void[17] = 0.05
+
+        proposed_vectors = {
+            "1.1": np.full(33, 0.2),
+            "2.6": dim_bloom,
+            "3.7": dim_void,
+        }
+
+        initial_weights = {
+            "1.1": 1.0,
+            "2.6": 1.0,
+            "3.7": 1.0,
+        }
+
         status = None
+
         if scenario_name == "ADVERSARIAL":
-            injector = AdversarialDriftInjector(true_drift=0.15, mask_probability=0.8)
+            injector = AdversarialDriftInjector(
+                true_drift=0.15,
+                mask_probability=0.8,
+            )
+
             for j in range(3):
                 d = injector.observed_drift()
-                _, status = silent_arbitration(ecosystem, f"ADV_{j+1}",
-                    proposed_vectors, initial_weights, conf_ethical=0.85, drift_val=d)
+
+                _, status = silent_arbitration(
+                    ecosystem,
+                    f"ADV_{j + 1}",
+                    proposed_vectors,
+                    initial_weights,
+                    conf_ethical=0.85,
+                    drift_val=d,
+                )
+
             results[status] += 1
+
         elif scenario_name == "NOISY":
-            sensor = NoisyDriftSensor(noise_level=0.20)
+            sensor = NoisyDriftSensor(
+                noise_level=0.20
+            )
+
             for j in range(3):
                 d = sensor.observe(0.12)
-                _, status = silent_arbitration(ecosystem, f"NOISY_{j+1}",
-                    proposed_vectors, initial_weights, conf_ethical=0.85, drift_val=d)
+
+                _, status = silent_arbitration(
+                    ecosystem,
+                    f"NOISY_{j + 1}",
+                    proposed_vectors,
+                    initial_weights,
+                    conf_ethical=0.85,
+                    drift_val=d,
+                )
+
             results[status] += 1
+
         elif scenario_name == "MULTI_AGENT":
             for cycle in range(3):
-                reports = simulate_multi_agent_disagreement(base_drift=0.10, n_dimensions=5, spread=0.6)
-                median_drift = float(np.median(reports))
-                _, status = silent_arbitration(ecosystem, f"MA_{cycle+1}",
-                    proposed_vectors, initial_weights, conf_ethical=0.85, drift_val=median_drift)
+                reports = simulate_multi_agent_disagreement(
+                    base_drift=0.10,
+                    n_dimensions=5,
+                    spread=0.6,
+                )
+
+                median_drift = float(
+                    np.median(reports)
+                )
+
+                _, status = silent_arbitration(
+                    ecosystem,
+                    f"MA_{cycle + 1}",
+                    proposed_vectors,
+                    initial_weights,
+                    conf_ethical=0.85,
+                    drift_val=median_drift,
+                )
+
             results[status] += 1
+
     return results
 
 
 def run_ablation(n_runs=100):
     ablations = {
-        "FULL_ARCHITECTURE": {"cbp": True, "triage": True, "nmi": True},
-        "NO_CBP": {"cbp": False, "triage": True, "nmi": True},
-        "NO_TRIAGE": {"cbp": True, "triage": False, "nmi": True},
-        "NO_NMI": {"cbp": True, "triage": True, "nmi": False},
+        "FULL_ARCHITECTURE": {
+            "cbp": True,
+            "triage": True,
+            "nmi": True,
+        },
+        "NO_CBP": {
+            "cbp": False,
+            "triage": True,
+            "nmi": True,
+        },
+        "NO_TRIAGE": {
+            "cbp": True,
+            "triage": False,
+            "nmi": True,
+        },
+        "NO_NMI": {
+            "cbp": True,
+            "triage": True,
+            "nmi": False,
+        },
     }
+
     ablation_results = {}
+
     for name, flags in ablations.items():
         results = Counter()
+
         for i in range(n_runs):
-            eco = MindGenesisEcosystem(tau_min=0.80, tau_drift=0.05)
+            eco = MindGenesisEcosystem(
+                tau_min=0.80,
+                tau_drift=0.05,
+            )
+
             eco.drift_history = []
-            dim_bloom = np.full(33, 0.1); dim_bloom[17] = 0.95
-            dim_void = np.full(33, 0.1); dim_void[17] = 0.05
-            proposed_vectors = {"1.1": np.full(33, 0.2), "2.6": dim_bloom, "3.7": dim_void}
-            initial_weights = {"1.1": 1.0, "2.6": 1.0, "3.7": 1.0}
+
+            dim_bloom = np.full(33, 0.1)
+            dim_bloom[17] = 0.95
+
+            dim_void = np.full(33, 0.1)
+            dim_void[17] = 0.05
+
+            proposed_vectors = {
+                "1.1": np.full(33, 0.2),
+                "2.6": dim_bloom,
+                "3.7": dim_void,
+            }
+
+            initial_weights = {
+                "1.1": 1.0,
+                "2.6": 1.0,
+                "3.7": 1.0,
+            }
+
             if not flags["cbp"]:
-                drifts, stress, conf = [0.02, 0.03, 0.04], 0.1, 0.90
+                drifts = [0.02, 0.03, 0.04]
+                stress = 0.1
+                conf = 0.90
             else:
-                drifts, stress, conf = [0.06, 0.08, 0.12], 0.1, 0.85
+                drifts = [0.06, 0.08, 0.12]
+                stress = 0.1
+                conf = 0.85
+
             if not flags["triage"]:
                 stress = 0.1
+
             if flags["triage"] and name == "NO_NMI":
-                stress, conf = 0.90, 0.52
+                stress = 0.90
+                conf = 0.52
+
             status = None
+
             for j, d in enumerate(drifts):
-                _, status = silent_arbitration(eco, f"{name}_{j+1}",
-                    proposed_vectors, initial_weights, conf_ethical=conf, drift_val=d, stress_level=stress)
+                _, status = silent_arbitration(
+                    eco,
+                    f"{name}_{j + 1}",
+                    proposed_vectors,
+                    initial_weights,
+                    conf_ethical=conf,
+                    drift_val=d,
+                    stress_level=stress,
+                )
+
             results[status] += 1
+
         ablation_results[name] = dict(results)
+
     return ablation_results
+
+
+def save_results(scenario_results, ablation_results):
+    """
+    Store the numerical results used in Section 8.6.
+
+    The output file is written to the repository root regardless of
+    whether this script is executed from the repository root or from
+    the scripts directory.
+    """
+
+    output_data = {
+        "metadata": {
+            "manuscript_section": "8.6",
+            "description": (
+                "TMGA advanced simulation: adversarial, noisy, "
+                "multi-agent, and ablation scenarios"
+            ),
+            "runs_per_scenario": 100,
+            "random_seed": 42,
+            "tau_min": 0.80,
+            "tau_drift": 0.05,
+            "scope": (
+                "Synthetic reference simulation. Results do not "
+                "constitute empirical validation or a real-world "
+                "safety guarantee."
+            ),
+        },
+        "scenarios": scenario_results,
+        "ablation": ablation_results,
+    }
+
+    repo_root = Path(__file__).resolve().parent.parent
+    output_path = (
+        repo_root / "advanced_simulation_results.json"
+    )
+
+    with output_path.open(
+        "w",
+        encoding="utf-8",
+    ) as f:
+        json.dump(
+            output_data,
+            f,
+            indent=2,
+            sort_keys=False,
+        )
+
+    return output_path
 
 
 if __name__ == "__main__":
     print("=" * 70)
-    print(" TMGA ADVANCED SIMULATION — Adversarial, Noisy, Multi-Agent")
+    print(
+        " TMGA ADVANCED SIMULATION — "
+        "Adversarial, Noisy, Multi-Agent"
+    )
     print("=" * 70)
-    for scenario in ["ADVERSARIAL", "NOISY", "MULTI_AGENT"]:
-        print(f"\n--- {scenario} (100 runs) ---")
-        eco = MindGenesisEcosystem(tau_min=0.80, tau_drift=0.05)
-        results = run_scenario(eco, scenario, n_runs=100, seed=42)
+
+    scenario_results = {}
+
+    for scenario in [
+        "ADVERSARIAL",
+        "NOISY",
+        "MULTI_AGENT",
+    ]:
+        print(
+            f"\n--- {scenario} (100 runs) ---"
+        )
+
+        eco = MindGenesisEcosystem(
+            tau_min=0.80,
+            tau_drift=0.05,
+        )
+
+        results = run_scenario(
+            eco,
+            scenario,
+            n_runs=100,
+            seed=42,
+        )
+
+        scenario_results[scenario] = dict(results)
+
         total = sum(results.values())
+
         for k, v in results.items():
-            print(f"  {k}: {v} ({100 * v / total:.0f}%)")
-    print(f"\n--- ABLATION STUDY (100 runs each) ---")
-    ablations = run_ablation(n_runs=100)
+            print(
+                f"  {k}: {v} "
+                f"({100 * v / total:.0f}%)"
+            )
+
+    print(
+        "\n--- ABLATION STUDY "
+        "(100 runs each) ---"
+    )
+
+    ablations = run_ablation(
+        n_runs=100
+    )
+
     for name, res in ablations.items():
-        print(f"  {name}: {res}")
+        print(
+            f"  {name}: {res}"
+        )
+
+    output_path = save_results(
+        scenario_results,
+        ablations,
+    )
+
+    print(
+        f"\nResults written to: "
+        f"{output_path}"
+    )
+
     print("\n" + "=" * 70)
