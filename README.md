@@ -67,7 +67,7 @@ the-mind-genesis-architecture/
 │   ├── nhcp_simulation.py                 # Base simulation (Section 8.5, Table 9)
 │   ├── nhcp_simulation_advanced.py        # Advanced & Ablation simulation (Section 8.6, Table 10)
 │   ├── nhcp_simulation_comparative.py     # Comparative & Sensitivity analysis (Sections 8.7–8.8, Tables 11–12)
-│   └── nhcp_simulation_extended.py        # Extended 7-dimension simulation (Section 8.9, Table 13)
+│   └── nhcp_simulation_extended.py        # Extended 7-component simulation (Section 8.9, Table 13)
 ├── src/tmga/                              # Core TMGA Reference Code
 │   ├── __init__.py
 │   └── core.py                            # Conf_ethical & CBP activation predicate
