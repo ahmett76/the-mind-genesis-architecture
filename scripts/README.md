@@ -1,15 +1,15 @@
 # Reference Simulation Scripts
 
-This directory contains the reference simulation scripts described in Sections 8.5–8.9 of the paper.
+This directory contains the reference simulation scripts supporting the simulation evaluation summarized in Section 8.5 and reported in detail in Appendices A–E of the paper.
 
 ## Scripts
 
-| Script | Paper Section | Purpose |
-|--------|---------------|---------|
-| `nhcp_simulation.py` | Section 8.5, Table 9 | Base simulation (`NOMINAL`, `STRESS`, and `CBP` scenarios, 100 runs each) |
-| `nhcp_simulation_advanced.py` | Section 8.6, Table 10 | Advanced & ablation simulation (`ADVERSARIAL`, `NOISY`, `MULTI-AGENT`, and ablation conditions) |
-| `nhcp_simulation_comparative.py` | Sections 8.7–8.8, Tables 11–12 | Comparative evaluation and sensitivity analysis over `τ_drift` |
-| `nhcp_simulation_extended.py` | Section 8.9, Table 13 | Extended simulation with seven critical governance components active simultaneously |
+| Script | Paper Location | Purpose |
+|--------|----------------|---------|
+| `nhcp_simulation.py` | Appendix A | Base simulation (`NOMINAL`, `STRESS`, and `CBP` scenarios, 100 runs each) |
+| `nhcp_simulation_advanced.py` | Appendix B | Advanced & ablation simulation (`ADVERSARIAL`, `NOISY`, `MULTI-AGENT`, and ablation conditions) |
+| `nhcp_simulation_comparative.py` | Appendices C–D | Comparative evaluation and sensitivity analysis over `τ_drift` |
+| `nhcp_simulation_extended.py` | Appendix E | Extended simulation with seven critical governance components active simultaneously |
 
 ## Requirements
 
@@ -39,11 +39,11 @@ python nhcp_simulation_extended.py
 
 ### Base Simulation
 
-`nhcp_simulation.py` evaluates the `NOMINAL`, `STRESS`, and `CBP` scenarios described in Section 8.5 and reports the results to standard output.
+`nhcp_simulation.py` evaluates the `NOMINAL`, `STRESS`, and `CBP` scenarios reported in Appendix A and reports the results to standard output.
 
 ### Advanced & Ablation Simulation
 
-`nhcp_simulation_advanced.py` evaluates the `ADVERSARIAL`, `NOISY`, and `MULTI-AGENT` scenarios together with the ablation conditions described in Section 8.6.
+`nhcp_simulation_advanced.py` evaluates the `ADVERSARIAL`, `NOISY`, and `MULTI-AGENT` scenarios together with the ablation conditions reported in Appendix B.
 
 The script prints the results to standard output and writes the corresponding numerical results to:
 
@@ -55,7 +55,7 @@ in the repository root.
 
 ### Comparative & Sensitivity Simulation
 
-`nhcp_simulation_comparative.py` compares the TMGA CBP activation predicate with the `single-breach` and `three-cycle average` baselines and performs the threshold sensitivity analysis described in Sections 8.7–8.8.
+`nhcp_simulation_comparative.py` compares the TMGA CBP activation predicate with the `single-breach` and `three-cycle average` baselines and performs the threshold sensitivity analysis reported in Appendices C and D.
 
 The corresponding numerical results are stored in:
 
@@ -67,7 +67,7 @@ in the repository root.
 
 ### Extended Multi-Dimensional Simulation
 
-`nhcp_simulation_extended.py` evaluates the core governance pathway with seven critical components active simultaneously:
+`nhcp_simulation_extended.py` evaluates the core governance pathway with seven critical components active simultaneously, as reported in Appendix E:
 
 - `AGI Guard`
 - `ASI Guard`
