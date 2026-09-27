@@ -32,7 +32,7 @@ The 33-dimensional non-hierarchical cognitive interaction map illustrates coexis
 
 ![TMGA Architecture Map](interaction_map.png)
 
-*Figure 1 from Section 5 of the paper. The map illustrates the non-hierarchical interaction between the three spheres: AGI (Breadth), ASI (Scale), and AWI (Meaning and Responsible Restraint).*
+*Figure 2 from Section 5 of the paper. The map illustrates the non-hierarchical interaction between the three spheres: AGI (Breadth), ASI (Scale), and AWI (Meaning and Responsible Restraint).*
 
 ---
 
@@ -64,18 +64,18 @@ the-mind-genesis-architecture/
 │   └── safety_check.circom                # Illustrative Circom 2.1 arithmetic circuit
 ├── scripts/                               # Reference Simulation Executables
 │   ├── README.md
-│   ├── nhcp_simulation.py                 # Base simulation (Section 8.5, Table 9)
-│   ├── nhcp_simulation_advanced.py        # Advanced & Ablation simulation (Section 8.6, Table 10)
-│   ├── nhcp_simulation_comparative.py     # Comparative & Sensitivity analysis (Sections 8.7–8.8, Tables 11–12)
-│   └── nhcp_simulation_extended.py        # Extended 7-component simulation (Section 8.9, Table 13)
+│   ├── nhcp_simulation.py                 # Base simulation (Appendix A)
+│   ├── nhcp_simulation_advanced.py        # Advanced & Ablation simulation (Appendix B)
+│   ├── nhcp_simulation_comparative.py     # Comparative & Sensitivity analysis (Appendices C–D)
+│   └── nhcp_simulation_extended.py        # Extended 7-component simulation (Appendix E)
 ├── src/tmga/                              # Core TMGA Reference Code
 │   ├── __init__.py
 │   └── core.py                            # Conf_ethical & CBP activation predicate
 ├── LICENSE                                # MIT License
 ├── README.md                              # Project homepage & technical overview
-├── advanced_simulation_results.json       # Stored numerical results for Section 8.6
-├── comparative_sensitivity_results.json   # Stored numerical results for Sections 8.7–8.8
-├── extended_simulation_results.json       # Stored numerical results for Section 8.9
+├── advanced_simulation_results.json       # Stored numerical results for Appendix B
+├── comparative_sensitivity_results.json   # Stored numerical results for Appendices C–D
+├── extended_simulation_results.json       # Stored numerical results for Appendix E
 ├── interaction_map.png
 └── pyproject.toml                         # Python build configuration
 ```
@@ -128,11 +128,11 @@ else:
 
 ## 🧪 Running the Reference Simulations
 
-The simulation scripts correspond to the reference evaluations reported in Sections 8.5 through 8.9 of the manuscript.
+The simulation scripts correspond to the detailed reference evaluations reported in **Appendices A–E** of the manuscript and summarized in **Section 8.5, Simulation Evaluation Summary**.
 
 The simulations evaluate specified architectural predicates under synthetic conditions. Their outputs should not be interpreted as evidence of real-world system safety, robustness, moral correctness, or deployment readiness.
 
-### 1. Base Simulation (Section 8.5, Table 9)
+### 1. Base Simulation (Appendix A)
 
 Evaluates `NOMINAL`, `STRESS`, and `CBP` scenarios (100 runs each).
 
@@ -141,11 +141,11 @@ cd scripts
 python nhcp_simulation.py
 ```
 
-*Expected Outcome:* Deterministic 100/100 convergence per scenario matching Table 9.
+*Expected Outcome:* Deterministic 100/100 convergence per scenario matching the reference results reported in Appendix A.
 
 This reflects deterministic execution of the predefined simulation rules, not empirical validation or a real-world safety guarantee.
 
-### 2. Advanced & Ablation Simulation (Section 8.6, Table 10)
+### 2. Advanced & Ablation Simulation (Appendix B)
 
 Evaluates `ADVERSARIAL`, `NOISY`, and `MULTI-AGENT` scenarios alongside ablation conditions (`NO_CBP`, `NO_TRIAGE`, `NO_NMI`).
 
@@ -157,7 +157,7 @@ python nhcp_simulation_advanced.py
 
 The `ADVERSARIAL` scenario intentionally exposes a limitation of the modeled CBP predicate when the drift measurement channel itself is manipulated.
 
-### 3. Comparative & Sensitivity Simulation (Sections 8.7–8.8, Tables 11–12)
+### 3. Comparative & Sensitivity Simulation (Appendices C–D)
 
 Compares the TMGA activation predicate against `single-breach` and `three-cycle average` baselines and evaluates sensitivity to the drift threshold `τ_drift`.
 
@@ -165,11 +165,11 @@ Compares the TMGA activation predicate against `single-breach` and `three-cycle 
 python nhcp_simulation_comparative.py
 ```
 
-*Expected Outcome:* Produces the comparative and sensitivity results reported in Tables 11–12. The corresponding numerical results are stored in `comparative_sensitivity_results.json`.
+*Expected Outcome:* Produces the comparative and sensitivity results reported in Appendices C and D. The corresponding numerical results are stored in `comparative_sensitivity_results.json`.
 
 The comparison concerns activation behavior under specified synthetic conditions. It does not establish that one predicate is universally safer or more correct than another.
 
-### 4. Extended Multi-Dimensional Simulation (Section 8.9, Table 13)
+### 4. Extended Multi-Dimensional Simulation (Appendix E)
 
 Simulates seven critical governance components active within the same reference environment:
 
@@ -185,7 +185,7 @@ Simulates seven critical governance components active within the same reference 
 python nhcp_simulation_extended.py
 ```
 
-*Expected Outcome:* Produces the extended results reported in Table 13. The corresponding numerical results are stored in `extended_simulation_results.json`.
+*Expected Outcome:* Produces the extended results reported in Appendix E. The corresponding numerical results are stored in `extended_simulation_results.json`.
 
 The extended simulation evaluates the core governance pathway with seven critical components active simultaneously. The remaining 26 dimensions of the 33-dimensional taxonomy are **not separately simulated or empirically validated by this experiment**.
 
@@ -197,7 +197,7 @@ The extended simulation evaluates the core governance pathway with seven critica
 
 * **Illustrative Circom Circuit:** A minimal reference implementation of the cryptographic verification relation discussed in Section 8.2. It is an illustrative circuit, not a production-ready proof system or evidence that TMGA as a whole has been formally verified. See [proofs/zkp/safety_check.circom](proofs/zkp/safety_check.circom).
 
-* **Exploratory Multi-Agent Testbed:** Supplementary runtime conflict-resolution scenarios used to explore selected governance mechanisms. These materials are separate from the primary simulation results reported in Sections 8.5–8.9 and should not be interpreted as empirical validation of the full 33-dimensional architecture. See [docs/TMGA_MultiAgent_Testbed_Simulation.pdf](docs/TMGA_MultiAgent_Testbed_Simulation.pdf).
+* **Exploratory Multi-Agent Testbed:** Supplementary runtime conflict-resolution scenarios used to explore selected governance mechanisms. These materials are separate from the primary simulation results summarized in Section 8.5 and reported in detail in Appendices A–E, and should not be interpreted as empirical validation of the full 33-dimensional architecture. See [docs/TMGA_MultiAgent_Testbed_Simulation.pdf](docs/TMGA_MultiAgent_Testbed_Simulation.pdf).
 
 ---
 
