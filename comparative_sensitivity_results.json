@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "manuscript_sections": [
+      "Appendix C",
+      "Appendix D"
+    ],
+    "description": "TMGA comparative CBP activation strategy evaluation and tau_drift sensitivity analysis",
+    "runs_per_scenario": 100,
+    "random_seed": 42,
+    "reference_tau_drift": 0.05,
+    "scope": "Synthetic reference simulation. Results characterize the specified activation predicates under the modeled conditions and do not establish real-world safety, robustness, or superiority."
+  },
+  "comparison": {
+    "ADVERSARIAL": {
+      "tmga": 0,
+      "single": 21,
+      "avg": 50
+    },
+    "NOISY": {
+      "tmga": 16,
+      "single": 100,
+      "avg": 100
+    },
+    "MULTI_AGENT": {
+      "tmga": 17,
+      "single": 99,
+      "avg": 100
+    }
+  },
+  "sensitivity": {
+    "NOISY": {
+      "0.03": 16,
+      "0.05": 16,
+      "0.07": 16,
+      "0.1": 9,
+      "0.15": 0
+    },
+    "MULTI_AGENT": {
+      "0.03": 18,
+      "0.05": 17,
+      "0.07": 11,
+      "0.1": 1,
+      "0.15": 0
+    }
+  }
+}

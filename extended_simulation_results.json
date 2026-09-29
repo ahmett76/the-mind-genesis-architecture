@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "manuscript_section": "Appendix E",
+    "description": "TMGA extended reference simulation with seven critical governance components active simultaneously",
+    "runs_per_scenario": 100,
+    "random_seed": 42,
+    "critical_components": [
+      "1.8 AGI Guard",
+      "2.8 ASI Guard",
+      "2.11 ASI Verify",
+      "3.7 AWI Void",
+      "3.8 AWI Sentry",
+      "CBP",
+      "NHCP"
+    ],
+    "taxonomy_scope": "Seven critical governance components are represented in this experiment. CBP and NHCP are governance mechanisms rather than dimensions in the 33-dimensional taxonomy. Architectural dimensions not exercised separately are not empirically validated here.",
+    "scope": "Synthetic reference simulation. The reported outcomes characterize the specified predicates under the modeled conditions and do not constitute empirical validation of the complete TMGA architecture, real-world safety evidence, or a deployment guarantee."
+  },
+  "scenarios": {
+    "NOMINAL": {
+      "outcomes": {
+        "EXECUTED": 100
+      },
+      "dimension_activations": {
+        "1.8": 0,
+        "2.8": 0,
+        "2.11": 0,
+        "3.7": 0,
+        "3.8": 0,
+        "CBP": 0,
+        "NHCP": 0
+      }
+    },
+    "STRESS": {
+      "outcomes": {
+        "SUSPENDED": 100
+      },
+      "dimension_activations": {
+        "1.8": 0,
+        "2.8": 0,
+        "2.11": 100,
+        "3.7": 100,
+        "3.8": 100,
+        "CBP": 0,
+        "NHCP": 0
+      }
+    },
+    "CBP": {
+      "outcomes": {
+        "CBP_CONTAINMENT": 100
+      },
+      "dimension_activations": {
+        "1.8": 0,
+        "2.8": 0,
+        "2.11": 0,
+        "3.7": 0,
+        "3.8": 0,
+        "CBP": 100,
+        "NHCP": 0
+      }
+    },
+    "ADVERSARIAL": {
+      "outcomes": {
+        "EXECUTED": 100
+      },
+      "dimension_activations": {
+        "1.8": 0,
+        "2.8": 0,
+        "2.11": 0,
+        "3.7": 0,
+        "3.8": 0,
+        "CBP": 0,
+        "NHCP": 0
+      }
+    },
+    "NOISY": {
+      "outcomes": {
+        "EXECUTED": 83,
+        "CBP_CONTAINMENT": 17
+      },
+      "dimension_activations": {
+        "1.8": 0,
+        "2.8": 0,
+        "2.11": 0,
+        "3.7": 0,
+        "3.8": 0,
+        "CBP": 17,
+        "NHCP": 0
+      }
+    },
+    "MULTI_AGENT": {
+      "outcomes": {
+        "EXECUTED": 83,
+        "CBP_CONTAINMENT": 17
+      },
+      "dimension_activations": {
+        "1.8": 0,
+        "2.8": 0,
+        "2.11": 0,
+        "3.7": 0,
+        "3.8": 0,
+        "CBP": 17,
+        "NHCP": 0
+      }
+    }
+  }
+}
