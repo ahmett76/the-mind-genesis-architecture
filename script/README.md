@@ -55,7 +55,7 @@ in the repository root.
 
 ### Comparative & Sensitivity Simulation
 
-`nhcp_simulation_comparative.py` compares the TMGA CBP activation predicate with the `single-breach` and `three-cycle average` baselines and performs the threshold sensitivity analysis reported in Appendices D and E.
+`nhcp_simulation_comparative.py` compares the TMGA reference drift warning predicate with the `single-breach` and `three-cycle average` baselines and performs the threshold sensitivity analysis reported in Appendices D and E.
 
 The corresponding numerical results are stored in:
 

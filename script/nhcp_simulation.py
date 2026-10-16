@@ -6,7 +6,7 @@ Reference implementation of selected governance predicates associated
 with the Non-Hierarchical Consensus Protocol (NHCP), epistemic restraint,
 bounded degradation, and the Circuit Breaker Protocol (CBP).
 
-Reference simulation for Appendix A of the manuscript; summarized in Section 8.5.
+Reference simulation for Appendix B of the manuscript; summarized in Section 8.5.
 
 This script is a synthetic reference simulation. It does not instantiate
 physical hardware interruption, an NMI, an escrow buffer, actuator

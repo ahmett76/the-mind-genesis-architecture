@@ -1,5 +1,5 @@
 # TMGA ADVANCED SIMULATION — Adversarial, Noisy, Multi-Agent & Ablation
-# Reference simulation for Appendix B of the manuscript; summarized in Section 8.5.
+# Reference simulation for Appendix C of the manuscript; summarized in Section 8.5.
 
 import numpy as np
 import io
@@ -337,7 +337,7 @@ def run_ablation(n_runs=100):
 
 def save_results(scenario_results, ablation_results):
     """
-    Store the numerical results used in Appendix B.
+    Store the numerical results used in Appendix C.
 
     The output file is written to the repository root regardless of
     whether this script is executed from the repository root or from
@@ -346,7 +346,7 @@ def save_results(scenario_results, ablation_results):
 
     output_data = {
         "metadata": {
-            "manuscript_section": "Appendix B",
+            "manuscript_section": "Appendix C",
             "description": (
                 "TMGA advanced simulation: adversarial, noisy, "
                 "multi-agent, and ablation scenarios"

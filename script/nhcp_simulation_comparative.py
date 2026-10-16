@@ -272,8 +272,8 @@ def save_results(
     output_data = {
         "metadata": {
             "manuscript_sections": [
-                "Appendix C",
                 "Appendix D",
+                "Appendix E",
             ],
             "description": (
                 "TMGA comparative CBP activation strategy "

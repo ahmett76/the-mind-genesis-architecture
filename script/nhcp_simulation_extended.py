@@ -1,5 +1,5 @@
 # TMGA EXTENDED MULTI-DIMENSIONAL SIMULATION
-# Reference simulation for Appendix E of the manuscript; summarized in Section 8.5.
+# Reference simulation for Appendix F of the manuscript; summarized in Section 8.5.
 #
 # This reference experiment models seven critical governance components:
 # AGI Guard (1.8), ASI Guard (2.8), ASI Verify (2.11),
@@ -140,7 +140,7 @@ def run_extended_scenario(
 
         # Strict monotonicity filter.
         # Matches the reference condition described
-        # in Appendix E of the manuscript.
+        # in Appendix F of the manuscript.
         cbp_triggered = False
 
         if all(
@@ -194,7 +194,7 @@ def run_extended_scenario(
 
 def save_results(all_results):
     """
-    Save Appendix E reference simulation results.
+    Save Appendix F reference simulation results.
 
     The output is written to the repository root regardless of the
     directory from which this script is executed.
@@ -202,7 +202,7 @@ def save_results(all_results):
 
     output_data = {
         "metadata": {
-            "manuscript_section": "Appendix E",
+            "manuscript_section": "Appendix F",
             "description": (
                 "TMGA extended reference simulation "
                 "with seven critical governance "
