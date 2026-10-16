@@ -24,7 +24,7 @@ def conf_ethical(
     The reference form is:
 
         Conf_ethical(A, C)
-            = sum(V_i * w_i) / (1 + exp(delta_U))
+            = sum(V_i * w_i) / exp(delta_U)
 
     where ``V_i`` represents a rule-compliance value, ``w_i`` its
     corresponding weight, and ``delta_U`` predictive uncertainty.
@@ -48,6 +48,15 @@ def conf_ethical(
             "predictive_uncertainty must be finite or positive infinity"
         )
 
+    if not rule_compliances:
+        raise ValueError("at least one compliance value is required")
+    if any(not math.isfinite(v) or not 0.0 <= v <= 1.0 for v in rule_compliances):
+        raise ValueError("rule_compliances must be finite values in [0, 1]")
+    if any(not math.isfinite(w) or w < 0.0 for w in rule_weights):
+        raise ValueError("rule_weights must be finite and non-negative")
+    if sum(rule_weights) > 1.0 + 1e-12:
+        raise ValueError("sum of rule_weights must not exceed 1")
+
     weighted = sum(
         value * weight
         for value, weight in zip(
@@ -56,26 +65,13 @@ def conf_ethical(
         )
     )
 
-    # Numerically stable evaluation of:
-    #
-    #     weighted / (1 + exp(predictive_uncertainty))
-    #
-    # For large positive uncertainty, evaluating exp(x) directly may
-    # overflow. The equivalent expression below keeps the expected
-    # limiting behavior: Conf_ethical -> 0 as uncertainty -> +infinity.
-    if predictive_uncertainty >= 0.0:
-        exp_neg = math.exp(-predictive_uncertainty)
-        confidence = (
-            weighted
-            * exp_neg
-            / (1.0 + exp_neg)
-        )
-    else:
-        exp_pos = math.exp(predictive_uncertainty)
-        confidence = (
-            weighted
-            / (1.0 + exp_pos)
-        )
+    # Numerically stable evaluation of weighted / exp(delta_U).
+    # The manuscript's normalized reference assumes delta_U >= 0.
+    # Reject negative uncertainty rather than silently treating it as
+    # a confidence multiplier.
+    if predictive_uncertainty < 0.0:
+        raise ValueError("predictive_uncertainty must be non-negative")
+    confidence = weighted * math.exp(-predictive_uncertainty)
 
     return confidence
 
@@ -84,9 +80,9 @@ def cbp_triggered(
     drift_history: Sequence[float],
     tau_drift: float = 0.05,
 ) -> bool:
-    """Evaluate the reference Circuit Breaker Protocol predicate.
+    """Evaluate the reference three-cycle drift warning predicate.
 
-    CBP activates when the three most recent drift measurements all
+    A reference drift warning activates when the three most recent drift measurements all
     exceed ``tau_drift`` and increase strictly monotonically across
     those three observation cycles.
 
@@ -100,10 +96,14 @@ def cbp_triggered(
 
         d[t] > d[t-1] > d[t-2]
 
-    This is a reference governance predicate used by the TMGA
-    simulations. It is not a physical circuit breaker, hardware
-    interrupt, deployment guarantee, or complete containment system.
+    This is a reference warning predicate used by legacy TMGA
+    simulations. It is not sufficient to authorize CBP, and is not a
+    physical circuit breaker or complete containment system.
     """
+    if not math.isfinite(tau_drift) or tau_drift < 0.0:
+        raise ValueError("tau_drift must be finite and non-negative")
+    if any(not math.isfinite(v) or v < 0.0 for v in drift_history):
+        raise ValueError("drift_history must contain finite non-negative values")
     if len(drift_history) < 3:
         return False
 
@@ -124,3 +124,12 @@ def cbp_triggered(
         all_breach
         and monotonic_increase
     )
+
+
+def reference_drift_warning(drift_history: Sequence[float], tau_drift: float = 0.05) -> bool:
+    """Preferred explicit name for the three-cycle reference drift warning.
+
+    ``cbp_triggered`` is retained for compatibility with existing scripts.
+    Neither function grants institutional CBP authorization.
+    """
+    return cbp_triggered(drift_history, tau_drift)
