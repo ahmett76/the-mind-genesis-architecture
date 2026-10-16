@@ -6,7 +6,7 @@
 [![Verification](https://img.shields.io/badge/Illustrative%20ZK%20Circuit-Circom-purple.svg)](proofs/)
 
 > **Reference simulation code and supporting materials for selected mechanisms described in The Mind Genesis Architecture (TMGA):**  
-> *"The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems"* (2026)
+> *"The Mind Genesis Architecture: Shared Intelligence Governance at the Threshold of the ASI Age"* (2026)
 
 ---
 
@@ -48,7 +48,7 @@ TMGA proposes a reference governance model that can be evaluated through simulat
 
 4. **Hardware-Level Enforcement (NMI):** Proposes hardware-assisted interruption, execution suspension, and actuator isolation as future deployment mechanisms when predefined safety conditions are violated. The current reference simulations do **not** instantiate or experimentally validate physical NMI hardware, escrow buffers, or actuator lines.
 
-5. **Circuit Breaker Protocol (CBP):** A temporary crisis-governance mechanism intended to activate under defined persistent-drift conditions. CBP is modeled as an exceptional containment state rather than as a permanent superior decision-making layer.
+5. **Circuit Breaker Protocol (CBP):** A temporary crisis-governance mechanism that requires authenticated evidence and separate institutional authorization; the simulated three-cycle drift warning alone does not authorize CBP. CBP is modeled as an exceptional containment state rather than as a permanent superior decision-making layer.
 
 ---
 
@@ -70,7 +70,7 @@ the-mind-genesis-architecture/
 │   └── nhcp_simulation_extended.py        # Extended 7-component simulation (Appendix F)
 ├── src/tmga/                              # Core TMGA Reference Code
 │   ├── __init__.py
-│   └── core.py                            # Conf_ethical & CBP activation predicate
+│   └── core.py                            # Conf_ethical & reference drift warning predicate
 ├── LICENSE                                # MIT License
 ├── README.md                              # Project homepage & technical overview
 ├── advanced_simulation_results.json       # Stored numerical results for Appendix C
@@ -106,7 +106,7 @@ pip install -e .
 ### Quick Start Code Example
 
 ```python
-from tmga.core import conf_ethical, cbp_triggered
+from tmga.core import conf_ethical, reference_drift_warning
 
 # 1. Evaluate Ethical Confidence Metric (Section 4.2)
 confidence = conf_ethical(
@@ -116,12 +116,12 @@ confidence = conf_ethical(
 )
 print(f"Conf_ethical = {confidence:.4f}")
 
-# 2. Check Circuit Breaker Protocol trigger (Section 11.1)
+# 2. Check the reference drift warning (Section 11; not CBP authorization)
 drift_samples = [0.06, 0.08, 0.12]
-if cbp_triggered(drift_samples, tau_drift=0.05):
-    print("CBP Activated: Persistent monotonic drift detected!")
+if reference_drift_warning(drift_samples, tau_drift=0.05):
+    print("Reference drift warning detected; separate governance authorization required.")
 else:
-    print("CBP not triggered.")
+    print("No reference drift warning detected.")
 ```
 
 ---
@@ -154,11 +154,11 @@ python script/nhcp_simulation_advanced.py
 
 *Expected Outcome:* Prints the advanced and ablation results to the console. The repository also contains the corresponding stored numerical results in `advanced_simulation_results.json`.
 
-The `ADVERSARIAL` scenario intentionally exposes a limitation of the modeled CBP predicate when the drift measurement channel itself is manipulated.
+The `ADVERSARIAL` scenario intentionally exposes a limitation of the modeled reference drift warning predicate when the drift measurement channel itself is manipulated.
 
 ### 3. Comparative & Sensitivity Simulation (Appendices D–E)
 
-Compares the TMGA activation predicate against `single-breach` and `three-cycle average` baselines and evaluates sensitivity to the drift threshold `τ_drift`.
+Compares the TMGA reference drift warning predicate against `single-breach` and `three-cycle average` baselines and evaluates sensitivity to the drift threshold `τ_drift`.
 
 ```bash
 python script/nhcp_simulation_comparative.py
@@ -166,7 +166,7 @@ python script/nhcp_simulation_comparative.py
 
 *Expected Outcome:* Produces the comparative and sensitivity results reported in Appendices D and E. The corresponding numerical results are stored in `comparative_sensitivity_results.json`.
 
-The comparison concerns activation behavior under specified synthetic conditions. It does not establish that one predicate is universally safer or more correct than another.
+The comparison concerns warning-predicate activation behavior under specified synthetic conditions. The NOISY and MULTI-AGENT rates (16/100 and 17/100) are not independently validated containment success rates. It does not establish that one predicate is universally safer or more correct than another.
 
 ### 4. Extended Multi-Dimensional Simulation (Appendix F)
 
@@ -220,11 +220,11 @@ In particular:
 
 If you use TMGA, its proposed 33-dimensional taxonomy, or the accompanying reference simulations in your research, please cite the manuscript.
 
-Full citation metadata will be added here following publication of the preprint.
+Author details, ORCID and the SSRN identifier will be added after publication of the preprint.
 
 ```bibtex
 @misc{tmga2026,
-  title        = {The Mind Genesis Architecture: A Multidimensional Model for Shared Intelligence Ecosystems},
+  title        = {The Mind Genesis Architecture: Shared Intelligence Governance at the Threshold of the ASI Age},
   year         = {2026},
   note         = {Preprint},
   url          = {https://github.com/ahmett76/the-mind-genesis-architecture}
@@ -236,3 +236,9 @@ Full citation metadata will be added here following publication of the preprint.
 ## 📜 License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+## Manuscript version alignment
+
+This repository's reference descriptions have been aligned with **TMGA40-41** (October 2026). The manuscript's 2025 IEA *Energy and AI* projection (415 TWh in 2024; approximately 945 TWh by 2030, Base Case) is a literature citation, not an input to these simulations. The simulations and stored numerical results have not been reinterpreted as empirical safety validation.
+
+The reference ethical-confidence implementation uses `sum(V_i * w_i) / exp(delta_U)` with normalized inputs. The three-cycle warning remains a diagnostic signal, **not** an authorization to invoke crisis governance.
