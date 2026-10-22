@@ -234,8 +234,11 @@ Author details, ORCID and the SSRN identifier will be added after publication of
 @misc{tmga2026,
   title        = {The Mind Genesis Architecture: Shared Intelligence Governance at the Threshold of the ASI Age},
   year         = {2026},
-  note         = {Preprint},
-  url          = {https://github.com/ahmett76/the-mind-genesis-architecture}
+  note         = {Preprint available on SSRN},
+  url          = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7633039}
+}
+```
+{https://github.com/ahmett76/the-mind-genesis-architecture}
 }
 ```
 
