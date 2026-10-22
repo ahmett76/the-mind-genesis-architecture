@@ -10,6 +10,14 @@
 
 ---
 
+### Preprint
+
+**The Mind Genesis Architecture: Shared Intelligence Governance at the Threshold of the ASI Age**
+
+The research preprint associated with this repository is now publicly available on SSRN.
+
+**Read the paper:** [SSRN Preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7633039)
+
 ## 📌 Overview
 
 **The Mind Genesis Architecture (TMGA)** is a proposed 33-dimensional reference architecture for studying the transition from tool-based computation toward a **Shared Intelligence Ecosystem**.
